@@ -58,7 +58,13 @@ app.post('/allReviews', async(req, res)=>{
     res.send(getReview)
 })
 
-
+app.get('/allReviews', async(req, res )=>{
+    const query = {}
+    const cursor = allReviews.find(query);
+    const services = await cursor.toArray();
+    // console.log(services)
+    res.send(services)
+});
 
 run().catch(error => console.error(error))
 
