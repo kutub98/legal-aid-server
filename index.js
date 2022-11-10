@@ -42,7 +42,12 @@ app.get("/services", async (req, res) => {
   res.send(services);
 });
 
-
+app.post("/services", async (req, res) => {
+  const PostingAService = req.body;
+  const postedAServices = await allLegalServices.insertOne(PostingAService);
+  console.log(postedAServices);
+  res.send(postedAServices);
+});
 
 app.get("/services/:id", async (req, res) => {
   const id = req.params.id;
