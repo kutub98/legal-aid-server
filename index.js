@@ -79,11 +79,19 @@ app.get("/allReviews/:id", async (req, res) => {
   res.send(getReviewsById);
 });
 
-
-
-
-
-
+app.get('/allReviews', async(req, res)=>{
+  let query = {}
+  if(req.query.email){
+        email ={
+          email: req.query.email
+        }
+  }
+  const cursor = allReviews.find(query);
+  const getAllUserReview = await cursor.toArray();
+  console.log(getAllUserReview)
+  res.send(getAllUserReview)
+  
+})
 
 
 run().catch((error) => console.error(error));
