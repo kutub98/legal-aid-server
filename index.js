@@ -66,6 +66,13 @@ app.get("/allReviews", async (req, res) => {
   // console.log(services)
   res.send(getAllReview);
 });
+app.get("/allReviews/:id", async (req, res) => {
+  const id = req.params.id;
+  const getReviewsById = await allReviews.findOne(query);
+  const query = { _id: ObjectId(id) };
+  console.log(getReviewsById);
+  res.send(getReviewsById);
+});
 
 
 
